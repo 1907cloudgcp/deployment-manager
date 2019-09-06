@@ -1,19 +1,22 @@
 
 urlBase = 'https://www.googleapis.com/compute/v1/'
-myProject = 'cloudadmingcpdemos'
-zone = 'us-central1-a'
+# myProject = 'cloudadmingcpdemos'
+# zone = 'us-central1-a'
+
+#context.env['deployment'] name of deployment on creation
+#context.env['name'] name of the resource using the template
+#context.env['project'] the id of the project the deployment is in
 
 
-
-def GenerateConfig(unused_context):
+def GenerateConfig(context):
     resources = {'resources': [{
-        'name': 'template-vm-1',
+        'name': context.env['name'],
         'type': 'compute.v1.instance',
         'properties': {
-            'zone': zone,
+            'zone': context.properties['zone'],
             'machineType': ''.join([urlBase, 'projects/', 
-                                    myProject, '/',
-                                    'zones/', zone, '/',
+                                    context.env['project'], '/',
+                                    'zones/', context.properties['zone'], '/',
                                      'machineTypes/f1-micro']),
             'disks':[{
                 'deviceName': 'boot-disk',
