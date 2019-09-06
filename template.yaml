@@ -1,0 +1,13 @@
+imports:
+- path: vm-template.py
+
+
+resources:
+- name: vm1
+  type: vm-template.py
+- name: new-network
+  type: compute.v1.network
+  properties:
+    routingConfig:
+      routingMode: REGIONAL
+    autoCreateSubnetworks: true

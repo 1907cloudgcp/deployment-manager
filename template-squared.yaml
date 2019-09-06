@@ -1,0 +1,9 @@
+imports:
+- path: firewall-template.py
+- path: network-template.py
+- path: vm-template.py
+- path: template-template.py
+
+resources:
+- name: compute-stack
+  type: template-template.py
